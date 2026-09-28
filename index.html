@@ -16,7 +16,7 @@
 <header class="topbar">
   <button class="brand" data-view="home"><span class="brandmark">TA</span><span><b>TRADE ACADEMY</b><small>ULTIMATE · TJ</small></span></button>
   <nav class="desktop-nav">
-    <button data-view="home" class="active">Главная</button><button data-view="learn">Академия</button><button data-view="terminal">Terminal</button><button data-view="analytics">Analytics</button><button data-view="tools">Tools</button>
+    <button data-view="home" class="active" data-i="home">Главная</button><button data-view="learn" data-i="academyNav">Академия</button><button data-view="terminal" data-i="terminalNav">Терминал</button><button data-view="analytics" data-i="analyticsNav">Аналитика</button><button data-view="tools" data-i="toolsNav">Инструменты</button>
   </nav>
   <div class="top-actions"><button id="lang" class="chip">TJ</button><button id="theme" class="iconbtn">☾</button><button id="menu" class="iconbtn mobile-only">☰</button></div>
 </header>
@@ -51,7 +51,7 @@
 
 <section id="learn" class="view">
   <div class="page-head"><div><span>02 · ACADEMY</span><h2 data-i="academy">Академия трейдера</h2><p data-i="academyp">От нуля до системного подхода. Проходи модули в своём темпе.</p></div><div class="progress-ring"><b id="learnPct">0%</b><span>progress</span></div></div>
-  <div id="courses" class="course-grid"></div>
+  <div class="academy-dashboard panel"><div><b data-i="academyStatus">Твой прогресс</b><p id="academyStatusText" class="muted">0 уроков завершено</p></div><div class="academy-actions"><button id="continueLearning" class="primary" data-i="continue">Продолжить обучение</button><button id="quizHub" class="ghost" data-i="quizHub">Центр тестов</button></div></div><div id="courses" class="course-grid"></div>
 </section>
 
 <section id="terminal" class="view">
@@ -83,7 +83,7 @@
 </section>
 </main>
 <footer><div><b>TRADE ACADEMY ULTIMATE</b><span>JABORZODA and MUZAFARZODA</span></div><p>Educational demo only · No financial advice · No real-money execution</p><span>© <span id="year"></span></span></footer>
-<div id="toast" class="toast"></div>
+<div id="lessonModal" class="modal"><div class="modal-card lesson-card"><button class="modal-close" data-close>×</button><div class="modal-kicker" id="lessonKicker"></div><h2 id="lessonTitle"></h2><p id="lessonText" class="lesson-text"></p><div id="lessonExample" class="lesson-example"></div><div class="question-box"><div class="question-head"><span id="questionNumber"></span><b id="questionText"></b></div><div id="answers" class="answers"></div><div id="answerFeedback" class="answer-feedback"></div><button id="nextQuestion" class="primary wide" disabled data-i="nextQuestion">Следующий вопрос</button></div></div></div><div id="quizModal" class="modal"><div class="modal-card quiz-card"><button class="modal-close" data-close>×</button><div class="modal-kicker" data-i="quizKicker">QUIZ LAB</div><h2 data-i="quizTitle">Центр тестов</h2><p data-i="quizDesc">Проверь знания по всем модулям.</p><div id="quizContent"></div></div></div><div id="toast" class="toast"></div>
 <div id="error" class="error-box"></div>
 </div>
 <script src="script.js"></script>
