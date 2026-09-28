@@ -1,91 +1,94 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07100d">
-<meta name="description" content="TRADE ACADEMY ULTIMATE — интерактивная академия и demo trading terminal на русском и таджикском языках.">
-<title>TRADE ACADEMY ULTIMATE</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06110c"><meta name="description" content="TRADE ACADEMY ULTIMATE TJ — bilingual trading academy, demo terminal, analytics and trader workspace.">
+<link rel="manifest" href="manifest.webmanifest"><title>TRADE ACADEMY ULTIMATE TJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="boot" class="boot"><div class="loader"></div><b>TRADE ACADEMY</b><span>Loading terminal...</span></div>
+<div id="boot"><div class="boot-logo">TA<span>+</span></div><b>TRADE ACADEMY</b><small>ULTIMATE TJ · INITIALIZING</small><i></i></div>
 <div class="app">
 <header class="topbar">
-  <button class="brand" data-view="home"><span class="brandmark">TA</span><span><b>TRADE ACADEMY</b><small>ULTIMATE · TJ</small></span></button>
-  <nav class="desktop-nav">
-    <button data-view="home" class="active" data-i="home">Главная</button><button data-view="learn" data-i="academyNav">Академия</button><button data-view="terminal" data-i="terminalNav">Терминал</button><button data-view="analytics" data-i="analyticsNav">Аналитика</button><button data-view="tools" data-i="toolsNav">Инструменты</button>
-  </nav>
-  <div class="top-actions"><button id="lang" class="chip">TJ</button><button id="theme" class="iconbtn">☾</button><button id="menu" class="iconbtn mobile-only">☰</button></div>
+ <button class="brand" data-view="home"><span class="brandmark">TA</span><span><strong>TRADE ACADEMY</strong><small>ULTIMATE · TJ</small></span></button>
+ <nav class="nav"><button data-view="home" class="active" data-t="home">Главная</button><button data-view="learn" data-t="academy">Академия</button><button data-view="terminal" data-t="terminal">Терминал</button><button data-view="analytics" data-t="analytics">Аналитика</button><button data-view="tools" data-t="tools">Инструменты</button></nav>
+ <div class="actions"><button id="lang" class="lang">TJ</button><button id="theme" class="square">☾</button><button id="menu" class="square mobile">☰</button></div>
 </header>
-<div id="mobileNav" class="mobile-nav"><button data-view="home">Главная</button><button data-view="learn">Академия</button><button data-view="terminal">Terminal</button><button data-view="analytics">Analytics</button><button data-view="tools">Tools</button></div>
+<div id="mobileNav" class="mobile-nav"><button data-view="home">Главная</button><button data-view="learn">Академия</button><button data-view="terminal">Терминал</button><button data-view="analytics">Аналитика</button><button data-view="tools">Инструменты</button></div>
 
 <main>
 <section id="home" class="view active">
-  <div class="hero">
-    <div class="hero-copy">
-      <div class="eyebrow"><i></i><span data-i="live">MARKET SIMULATION ONLINE</span></div>
-      <h1><span data-i="hero1">Торгуй умнее.</span><br><em data-i="hero2">Учись как профессионал.</em></h1>
-      <p data-i="herop">Интерактивная среда для изучения рынка, анализа графиков и безопасной практики без реальных денег.</p>
-      <div class="hero-actions"><button class="primary" data-view="terminal">Открыть терминал <span>↗</span></button><button class="ghost" data-view="learn">Начать обучение</button></div>
-      <div class="hero-stats"><div><b>12</b><span data-i="modules">модулей</span></div><div><b>60+</b><span data-i="lessons">уроков</span></div><div><b>100%</b><span data-i="demo">demo</span></div></div>
-    </div>
-    <div class="hero-terminal panel">
-      <div class="panel-head"><div><span class="live-dot"></span> XAU/USD</div><span class="muted">DEMO FEED</span></div>
-      <div class="hero-price"><strong id="heroPrice">2,645.28</strong><span id="heroChange">+0.42%</span></div>
-      <canvas id="heroChart"></canvas>
-      <div class="ohlc"><span>O 2,634.12</span><span>H 2,651.90</span><span>L 2,628.44</span><span>C 2,645.28</span></div>
-    </div>
+ <div class="hero">
+  <div class="hero-copy"><div class="eyebrow"><i></i><span data-t="live">DEMO MARKET ONLINE</span></div>
+   <h1 data-t="hero">Торгуй умнее.<br><em>Учись как профессионал.</em></h1>
+   <p data-t="heroP">Большая интерактивная среда для обучения трейдингу: терминал, свечи, риск-менеджмент, практика, журнал и аналитика — в одном месте.</p>
+   <div class="hero-buttons"><button class="primary" data-view="terminal" data-t="openTerminal">Открыть терминал ↗</button><button class="secondary" data-view="learn" data-t="start">Начать обучение</button></div>
+   <div class="hero-metrics"><div><b>12</b><span data-t="modules">модулей</span></div><div><b>68</b><span data-t="lessons">уроков</span></div><div><b>60+</b><span data-t="questions">вопросов</span></div><div><b>100%</b><span>DEMO</span></div></div>
   </div>
-  <div class="ticker"><div>EUR/USD <b>1.1742</b><i>+0.31%</i></div><div>GBP/USD <b>1.3468</b><i>+0.18%</i></div><div>USD/JPY <b>148.62</b><i>-0.22%</i></div><div>XAU/USD <b>2,645.28</b><i>+0.42%</i></div><div>BTC/USD <b>66,842</b><i>+1.08%</i></div></div>
-  <div class="section-title"><span>01 · EXPERIENCE</span><h2 data-i="why">Не просто сайт. Твоя торговая среда.</h2></div>
-  <div class="feature-grid">
-    <article class="feature"><span>◈</span><h3>Realistic Terminal</h3><p data-i="f1">График со свечами, таймфреймы, сделки и открытые позиции.</p></article>
-    <article class="feature"><span>⌁</span><h3>Learning OS</h3><p data-i="f2">Пошаговая академия с прогрессом, тестами и достижениями.</p></article>
-    <article class="feature"><span>◫</span><h3>Trader Analytics</h3><p data-i="f3">Журнал сделок, риск, статистика и личный торговый план.</p></article>
-    <article class="feature"><span>✦</span><h3>Built for Mobile</h3><p data-i="f4">Интерфейс адаптирован под телефон — всё главное в один-два касания.</p></article>
-  </div>
+  <div class="hero-terminal glass"><div class="terminal-head"><div><span class="pulse"></span>XAU/USD <small>GOLD</small></div><span class="badge">SIMULATED</span></div><div class="big-price"><strong id="heroPrice">2,645.28</strong><span id="heroChange">+0.42%</span></div><canvas id="heroChart"></canvas><div class="ohlc"><span>O <b>2,634.12</b></span><span>H <b>2,651.90</b></span><span>L <b>2,628.44</b></span><span>C <b id="heroClose">2,645.28</b></span></div></div>
+ </div>
+ <div class="ticker" id="ticker"></div>
+ <div class="section-label">01 · PLATFORM</div><h2 class="section-title" data-t="why">Не просто сайт. Полная торговая среда.</h2>
+ <div class="feature-grid">
+  <article><div class="feature-icon">⌁</div><h3>Trading Terminal</h3><p data-t="f1">Свечной график, активы, таймфреймы, заявки, позиции, P&L и история.</p></article>
+  <article><div class="feature-icon">◈</div><h3>Trader Academy</h3><p data-t="f2">12 модулей от основ рынка до стратегии, психологии и финального экзамена.</p></article>
+  <article><div class="feature-icon">◫</div><h3>Analytics OS</h3><p data-t="f3">Win rate, expectancy, drawdown, R-multiple, streak и анализ журнала.</p></article>
+  <article><div class="feature-icon">✦</div><h3>Trader Toolkit</h3><p data-t="f4">Risk calculator, торговый план, журнал, чек-листы и экспорт данных.</p></article>
+ </div>
+ <div class="showcase glass"><div><span class="section-label">TRADER OS</span><h2 data-t="osTitle">Одна система для обучения и практики.</h2><p data-t="osP">Все данные сохраняются локально на устройстве. Никаких реальных ордеров и денег.</p></div><div class="mini-dashboard"><div><small>EQUITY</small><b>$10,428.60</b><i>+4.29%</i></div><div><small>WIN RATE</small><b>68.4%</b><span>42 trades</span></div><div><small>STREAK</small><b>7 🔥</b><span>days</span></div></div></div>
 </section>
 
 <section id="learn" class="view">
-  <div class="page-head"><div><span>02 · ACADEMY</span><h2 data-i="academy">Академия трейдера</h2><p data-i="academyp">От нуля до системного подхода. Проходи модули в своём темпе.</p></div><div class="progress-ring"><b id="learnPct">0%</b><span>progress</span></div></div>
-  <div class="academy-dashboard panel"><div><b data-i="academyStatus">Твой прогресс</b><p id="academyStatusText" class="muted">0 уроков завершено</p></div><div class="academy-actions"><button id="continueLearning" class="primary" data-i="continue">Продолжить обучение</button><button id="quizHub" class="ghost" data-i="quizHub">Центр тестов</button></div></div><div id="courses" class="course-grid"></div>
+ <div class="page-head"><div><span>02 · ACADEMY</span><h2 data-t="academyTitle">Академия трейдера</h2><p data-t="academyP">Системная программа обучения. Проходи уроки, отвечай на вопросы и собирай XP.</p></div><div class="profile-chip"><div id="avatar">F</div><div><b id="levelName">Novice</b><small><span id="xp">0</span> XP</small></div></div></div>
+ <div class="academy-top glass"><div class="progress-big"><div class="progress-circle"><b id="learnPct">0%</b><small>PROGRESS</small></div><div><strong data-t="yourProgress">Твой прогресс</strong><p id="academyStatusText">0 из 68 уроков завершено</p><div class="xpbar"><i id="xpbar"></i></div></div></div><div class="academy-actions"><button id="continueLearning" class="primary" data-t="continue">Продолжить обучение</button><button id="quizHub" class="secondary" data-t="quizHub">Quiz Lab</button></div></div>
+ <div class="academy-tabs"><button class="active" data-filter="all">ALL</button><button data-filter="locked">LOCKED</button><button data-filter="done">COMPLETED</button></div><div id="courses" class="course-grid"></div>
 </section>
 
 <section id="terminal" class="view">
-  <div class="page-head"><div><span>03 · TERMINAL</span><h2 data-i="terminalTitle">Demo Trading Terminal</h2><p>Рыночная симуляция. Не является реальной торговлей.</p></div><div class="balance-box"><small>DEMO BALANCE</small><b id="balance">$10,000.00</b></div></div>
-  <div class="terminal-layout">
-    <div class="market panel">
-      <div class="marketbar"><select id="asset"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>XAU/USD</option><option>BTC/USD</option></select><div id="terminalPrice">1.1742</div><div id="terminalPct" class="up">+0.31%</div></div>
-      <div class="timebar"><button class="tf active" data-tf="1m">1m</button><button class="tf" data-tf="5m">5m</button><button class="tf" data-tf="15m">15m</button><button class="tf" data-tf="1h">1H</button><button class="tf" data-tf="4h">4H</button><button class="tf" data-tf="1d">1D</button></div>
-      <canvas id="chart"></canvas>
-      <div class="chart-legend"><span>● Demo feed</span><span>O <b id="co">1.1700</b></span><span>H <b id="ch">1.1760</b></span><span>L <b id="cl">1.1680</b></span></div>
-    </div>
-    <aside class="order panel"><h3>Quick Order</h3><label>Instrument<select id="orderAsset"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>XAU/USD</option><option>BTC/USD</option></select></label><label>Position size<input id="qty" type="number" value="0.10" step="0.01" min="0.01"></label><div class="rr"><span>Risk</span><b>1%</b><span>R:R</span><b>1:2</b></div><div class="trade-buttons"><button id="sell" class="sell">SELL</button><button id="buy" class="buy">BUY</button></div><div class="positions-head"><b>Open positions</b><span id="posCount">0</span></div><div id="positions" class="positions"></div></aside>
+ <div class="page-head terminal-page-head"><div><span>03 · DEMO TERMINAL</span><h2 data-t="terminalTitle">Trader Terminal</h2><p data-t="terminalP">Симуляция для обучения. Котировки и исполнение условные.</p></div><div class="account-strip"><div><small>BALANCE</small><b id="balance">$10,000.00</b></div><div><small>EQUITY</small><b id="equity">$10,000.00</b></div><div><small>FREE MARGIN</small><b id="freeMargin">$10,000.00</b></div></div></div>
+ <div class="terminal-layout">
+  <div class="chart-panel glass">
+   <div class="marketbar"><select id="asset"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>XAU/USD</option><option>BTC/USD</option></select><div class="market-price"><strong id="terminalPrice">1.1742</strong><span id="terminalPct">+0.31%</span></div><div class="chart-actions"><button id="indicatorBtn">Indicators</button><button id="resetChart">Reset</button></div></div>
+   <div class="tfbar"><button class="tf active" data-tf="1m">1m</button><button class="tf" data-tf="5m">5m</button><button class="tf" data-tf="15m">15m</button><button class="tf" data-tf="1h">1H</button><button class="tf" data-tf="4h">4H</button><button class="tf" data-tf="1d">1D</button><span class="chart-status">● SIMULATED DATA</span></div>
+   <div class="chart-wrap"><canvas id="chart"></canvas><div id="crosshair"></div><div id="tooltip"></div></div>
+   <div class="chart-legend"><span>O <b id="co">—</b></span><span>H <b id="ch">—</b></span><span>L <b id="cl">—</b></span><span>C <b id="cc">—</b></span><span>VOL <b id="cv">—</b></span></div>
+   <div class="indicator-drawer" id="indicatorDrawer"><label><input type="checkbox" id="ema20"> EMA 20</label><label><input type="checkbox" id="ema50"> EMA 50</label><label><input type="checkbox" id="rsiToggle"> RSI</label><label><input type="checkbox" id="levelsToggle"> S/R levels</label></div>
   </div>
+  <aside class="order-panel glass"><div class="order-tabs"><button class="active">ORDER</button><span>DEMO</span></div><label>Instrument<select id="orderAsset"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>XAU/USD</option><option>BTC/USD</option></select></label><div class="side-grid"><button id="buy" class="buy">BUY <small>LONG</small></button><button id="sell" class="sell">SELL <small>SHORT</small></button></div><div class="order-fields"><label>Size (lots)<input id="qty" type="number" value="0.10" step="0.01" min="0.01"></label><label>Risk %<input id="riskPct" type="number" value="1" step=".1" min=".1" max="10"></label><label>Stop Loss<input id="sl" type="number" value="0"></label><label>Take Profit<input id="tp" type="number" value="0"></label></div><div class="order-summary"><div><span>Entry</span><b id="entryPreview">—</b></div><div><span>Risk</span><b id="riskPreview">$100</b></div><div><span>R:R</span><b id="rrPreview">1:2</b></div></div><div class="positions-title"><b data-t="openPositions">Open positions</b><span id="posCount">0</span></div><div id="positions"></div></aside>
+ </div>
+ <div class="terminal-bottom"><div class="glass"><div class="subhead"><b>TRADE HISTORY</b><button id="clearHistory">Clear</button></div><div id="tradeHistory" class="history"></div></div><div class="glass"><div class="subhead"><b>ACCOUNT RULES</b></div><ul class="rules"><li>Risk per trade ≤ 1–2%</li><li>Always define invalidation before entry</li><li>Demo environment only</li><li>No guaranteed profits</li></ul></div></div>
 </section>
 
 <section id="analytics" class="view">
-  <div class="page-head"><div><span>04 · ANALYTICS</span><h2>Trader Analytics</h2><p>Смотри на свои решения как на систему.</p></div></div>
-  <div class="analytics-grid"><div class="metric panel"><span>Win rate</span><strong id="winrate">0%</strong><small>по журналу</small></div><div class="metric panel"><span>Trades</span><strong id="trades">0</strong><small>записей</small></div><div class="metric panel"><span>Average R</span><strong id="avgr">0.00R</strong><small>средний результат</small></div><div class="metric panel"><span>Learning</span><strong id="learnStat">0%</strong><small>академия</small></div></div>
-  <div class="analytics-main"><div class="panel big-stat"><div class="panel-head"><b>Performance map</b><span>LOCAL DATA</span></div><canvas id="performance"></canvas></div><div class="panel checklist"><h3>Trader checklist</h3><label><input type="checkbox" data-check="plan"> Есть план</label><label><input type="checkbox" data-check="risk"> Риск рассчитан</label><label><input type="checkbox" data-check="setup"> Есть setup</label><label><input type="checkbox" data-check="emotion"> Эмоции под контролем</label></div></div>
+ <div class="page-head"><div><span>04 · ANALYTICS OS</span><h2 data-t="analyticsTitle">Trader Analytics</h2><p data-t="analyticsP">Превращай историю решений в понятную статистику.</p></div><button id="exportData" class="secondary">Export JSON</button></div>
+ <div class="analytics-grid"><div class="metric glass"><small>WIN RATE</small><strong id="winrate">0%</strong><span>journal</span></div><div class="metric glass"><small>EXPECTANCY</small><strong id="expectancy">0.00R</strong><span>per trade</span></div><div class="metric glass"><small>MAX DRAWDOWN</small><strong id="drawdown">0R</strong><span>journal</span></div><div class="metric glass"><small>STREAK</small><strong id="streak">0</strong><span>best</span></div></div>
+ <div class="analytics-grid two"><div class="glass graph-card"><div class="subhead"><b>Equity / R curve</b><span id="journalCount">0 trades</span></div><canvas id="performance"></canvas></div><div class="glass stats-card"><h3>Performance breakdown</h3><div id="breakdown"></div></div></div>
+ <div class="glass checklist"><div class="subhead"><b data-t="checklist">Pre-trade checklist</b><span>LOCAL</span></div><label><input type="checkbox" data-check="plan"> <span data-t="check1">Есть торговый план</span></label><label><input type="checkbox" data-check="risk"> <span data-t="check2">Риск рассчитан</span></label><label><input type="checkbox" data-check="setup"> <span data-t="check3">Есть подтверждённый setup</span></label><label><input type="checkbox" data-check="emotion"> <span data-t="check4">Эмоции под контролем</span></label></div>
 </section>
 
 <section id="tools" class="view">
-  <div class="page-head"><div><span>05 · TOOLS</span><h2>Professional Toolkit</h2><p>Инструменты, которые помогают принимать решения до сделки.</p></div></div>
-  <div class="tools-grid">
-    <div class="panel tool"><h3>Risk Calculator</h3><div class="formgrid"><label>Balance<input id="rb" type="number" value="10000"></label><label>Risk %<input id="rp" type="number" value="1" step=".1"></label><label>Entry<input id="re" type="number" value="100"></label><label>Stop<input id="rs" type="number" value="98"></label></div><button id="calcRisk" class="primary wide">Calculate risk</button><div id="riskResult" class="result">Risk amount: $100.00 · Distance: 2.00%</div></div>
-    <div class="panel tool"><h3>Trading Journal</h3><form id="journalForm"><input id="jasset" placeholder="Asset · EUR/USD"><select id="jresult"><option value="win">Win</option><option value="loss">Loss</option><option value="be">Break-even</option></select><input id="jr" type="number" step=".1" placeholder="Result in R"><textarea id="jnote" placeholder="Что ты увидел? Почему вошёл?"></textarea><button class="primary wide">Save trade</button></form><div id="journalList"></div></div>
-    <div class="panel tool"><h3>Trading Plan</h3><textarea id="plan" rows="9" placeholder="Моя стратегия, рынки, риск на сделку, торговая сессия, запреты..."></textarea><button id="savePlan" class="primary wide">Save plan</button><small id="planSaved" class="muted"></small></div>
-  </div>
+ <div class="page-head"><div><span>05 · TOOLKIT</span><h2 data-t="toolsTitle">Professional Toolkit</h2><p data-t="toolsP">Практические инструменты трейдера.</p></div></div>
+ <div class="tools-grid">
+  <div class="glass tool"><div class="tool-icon">%</div><h3>Risk Calculator</h3><p>Сначала риск, потом сделка.</p><div class="form-grid"><label>Balance<input id="rb" type="number" value="10000"></label><label>Risk %<input id="rp" type="number" value="1" step=".1"></label><label>Entry<input id="re" type="number" value="100"></label><label>Stop<input id="rs" type="number" value="98"></label><label>Target<input id="rt" type="number" value="104"></label><label>R:R<input id="rrCalc" disabled value="2.00"></label></div><button id="calcRisk" class="primary wide">Calculate</button><div id="riskResult" class="result"></div></div>
+  <div class="glass tool"><div class="tool-icon">✎</div><h3>Trading Journal</h3><form id="journalForm"><div class="form-grid"><label>Asset<input id="jasset" placeholder="EUR/USD"></label><label>Result<select id="jresult"><option value="win">Win</option><option value="loss">Loss</option><option value="be">Break-even</option></select></label></div><input id="jr" type="number" step=".1" placeholder="Result in R"><input id="jsetup" placeholder="Setup / стратегия"><select id="jemotion"><option>Calm</option><option>FOMO</option><option>Fear</option><option>Revenge</option><option>Overconfidence</option></select><textarea id="jnote" placeholder="Что увидел? Почему вошёл? Что можно улучшить?"></textarea><button class="primary wide">Save trade</button></form><div id="journalList"></div></div>
+  <div class="glass tool"><div class="tool-icon">◎</div><h3>Trading Plan</h3><p>Твой личный operating manual.</p><textarea id="plan" rows="13" placeholder="Рынки:
+Сессии:
+Setup:
+Risk per trade:
+Максимум сделок:
+Когда НЕ торгую:
+Правила выхода:
+Правила после убытка:"></textarea><button id="savePlan" class="primary wide">Save plan</button><small id="planSaved" class="saved"></small></div>
+ </div>
+ <div class="glass data-tools"><div><b>Data center</b><p>Экспортируй прогресс, журнал и настройки, чтобы сохранить резервную копию.</p></div><div><button id="exportData2" class="secondary">Export JSON</button><button id="resetData" class="danger">Reset local data</button></div></div>
 </section>
 </main>
-<footer><div><b>TRADE ACADEMY ULTIMATE</b><span>JABORZODA and MUZAFARZODA</span></div><p>Educational demo only · No financial advice · No real-money execution</p><span>© <span id="year"></span></span></footer>
-<div id="lessonModal" class="modal"><div class="modal-card lesson-card"><button class="modal-close" data-close>×</button><div class="modal-kicker" id="lessonKicker"></div><h2 id="lessonTitle"></h2><p id="lessonText" class="lesson-text"></p><div id="lessonExample" class="lesson-example"></div><div class="question-box"><div class="question-head"><span id="questionNumber"></span><b id="questionText"></b></div><div id="answers" class="answers"></div><div id="answerFeedback" class="answer-feedback"></div><button id="nextQuestion" class="primary wide" disabled data-i="nextQuestion">Следующий вопрос</button></div></div></div><div id="quizModal" class="modal"><div class="modal-card quiz-card"><button class="modal-close" data-close>×</button><div class="modal-kicker" data-i="quizKicker">QUIZ LAB</div><h2 data-i="quizTitle">Центр тестов</h2><p data-i="quizDesc">Проверь знания по всем модулям.</p><div id="quizContent"></div></div></div><div id="toast" class="toast"></div>
-<div id="error" class="error-box"></div>
+<footer><div><strong>TRADE ACADEMY ULTIMATE TJ</strong><span>JABORZODA and MUZAFARZODA</span></div><p>Educational simulation · No financial advice · No real-money execution</p><span>© <b id="year"></b></span></footer>
+
+<div id="lessonModal" class="modal"><div class="modal-card lesson-card"><button class="close" data-close>×</button><div class="lesson-meta"><span id="lessonKicker"></span><b id="lessonProgress"></b></div><div class="lesson-body"><div class="lesson-main"><span class="eyebrow">ACADEMY LESSON</span><h2 id="lessonTitle"></h2><p id="lessonText"></p><div id="lessonPoints" class="points"></div><div id="lessonExample" class="example"></div></div><div class="question-box"><small id="questionNumber">QUESTION</small><h3 id="questionText"></h3><div id="answers" class="answers"></div><div id="answerFeedback"></div><button id="nextQuestion" class="primary wide" disabled>Следующий вопрос</button></div></div></div></div>
+<div id="quizModal" class="modal"><div class="modal-card quiz-card"><button class="close" data-close>×</button><span class="eyebrow">QUIZ LAB</span><h2>Knowledge Arena</h2><p>Проверь знания по модулям академии.</p><div id="quizContent"></div></div></div>
+<div id="toast"></div><div id="errorBox"></div>
 </div>
 <script src="script.js"></script>
-</body>
-</html>
+</body></html>
