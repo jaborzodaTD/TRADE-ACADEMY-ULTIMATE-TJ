@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="boot"><div class="boot-logo">TA<span>+</span></div><b>TRADE ACADEMY</b><small>ULTIMATE TJ · INITIALIZING</small><i></i></div>
+<div id="boot" aria-hidden="true"><div class="boot-orb"><span>TA</span></div><div class="boot-copy"><b>TRADE ACADEMY</b><small>ULTIMATE TJ · READY</small></div></div>
 <div class="app">
 <header class="topbar">
  <button class="brand" data-view="home"><span class="brandmark">TA</span><span><strong>TRADE ACADEMY</strong><small>ULTIMATE · TJ</small></span></button>
@@ -91,4 +91,4 @@ Risk per trade:
 <div id="toast"></div><div id="errorBox"></div>
 </div>
 <script src="script.js"></script>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{})}</script></body></html>
+<script>document.documentElement.classList.add("app-ready");setTimeout(function(){var b=document.getElementById("boot");if(b)b.remove()},900);if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(function(){})}</script></body></html>
