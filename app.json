@@ -1,0 +1,24 @@
+{
+  "expo":{
+    "name":"TRADE ACADEMY ULTIMATE",
+    "slug":"trade-academy-ultimate-tj",
+    "version":"2.0.0",
+    "orientation":"portrait",
+    "userInterfaceStyle":"dark",
+    "scheme":"tradeacademy",
+    "android":{
+      "package":"com.jaborzoda.tradeacademy",
+      "adaptiveIcon":{
+        "backgroundColor":"#07110c"
+      }
+    },
+    "ios":{
+      "bundleIdentifier":"com.jaborzoda.tradeacademy",
+      "supportsTablet":true
+    },
+    "web":{
+      "bundler":"metro"
+    },
+    "plugins":[]
+  }
+}
