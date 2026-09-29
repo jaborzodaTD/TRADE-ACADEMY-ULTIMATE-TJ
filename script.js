@@ -1,7 +1,22 @@
 (()=>{"use strict";
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],KEY="TA_ULTIMATE_V5";
 const D={lang:"ru",theme:"dark",progress:[],xp:0,positions:[],history:[],journal:[],plan:"",checks:{},balance:10000};
-let state=(()=>{try{return {...D,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch{return {...D}}})();const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+let state=(()=>{try{return {...D,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch{return {...D}}})();
+function normalizeState(){
+  if(!["ru","tj"].includes(state.lang))state.lang="ru";
+  if(!["dark","light"].includes(state.theme))state.theme="dark";
+  if(!Array.isArray(state.progress))state.progress=[];
+  if(!Array.isArray(state.positions))state.positions=[];
+  if(!Array.isArray(state.history))state.history=[];
+  if(!Array.isArray(state.journal))state.journal=[];
+  if(!state.checks||typeof state.checks!=="object"||Array.isArray(state.checks))state.checks={};
+  if(typeof state.plan!=="string")state.plan="";
+  if(!Number.isFinite(+state.xp))state.xp=0;
+  if(!Number.isFinite(+state.balance)||+state.balance<=0)state.balance=10000;
+  state.xp=+state.xp; state.balance=+state.balance;
+}
+normalizeState();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(err){console.warn("TRADE ACADEMY storage error:",err)}};
 const T={ru:{home:"Главная",academy:"Академия",terminal:"Терминал",analytics:"Аналитика",tools:"Инструменты",live:"DEMO MARKET ONLINE",hero:"Торгуй умнее.<br><em>Учись как профессионал.</em>",heroP:"Интерактивная среда для обучения трейдингу: терминал, свечи, риск-менеджмент, практика, журнал и аналитика — в одном месте.",openTerminal:"Открыть терминал ↗",start:"Начать обучение",modules:"модулей",lessons:"уроков",questions:"вопросов",why:"Не просто сайт. Полная торговая среда.",f1:"Свечной график, активы, таймфреймы, заявки, позиции, P&L и история.",f2:"12 модулей от основ рынка до стратегии, психологии и финального экзамена.",f3:"Win rate, expectancy, drawdown, R-multiple, streak и анализ журнала.",f4:"Risk calculator, торговый план, журнал, чек-листы и экспорт данных.",osTitle:"Одна система для обучения и практики.",osP:"Все данные сохраняются локально. Реальных ордеров и денег нет.",academyTitle:"Академия трейдера",academyP:"Системная программа обучения. Проходи уроки, отвечай на вопросы и собирай XP.",yourProgress:"Твой прогресс",continue:"Продолжить обучение",quizHub:"Quiz Lab",terminalTitle:"Trader Terminal",terminalP:"Симуляция для обучения. Котировки и исполнение условные.",analyticsTitle:"Trader Analytics",analyticsP:"Превращай историю решений в понятную статистику.",toolsTitle:"Professional Toolkit",toolsP:"Практические инструменты трейдера.",checklist:"Pre-trade checklist",check1:"Есть торговый план",check2:"Риск рассчитан",check3:"Есть подтверждённый setup",check4:"Эмоции под контролем"},tj:{home:"Асосӣ",academy:"Академия",terminal:"Терминал",analytics:"Аналитика",tools:"Асбобҳо",live:"БОЗОРИ DEMO ФАЪОЛ",hero:"Донотар савдо кун.<br><em>Мисли профессионал омӯз.</em>",heroP:"Муҳити интерактивӣ барои омӯзиши трейдинг: терминал, шамъҳо, риск, практика, журнал ва аналитика — ҳама дар як ҷо.",openTerminal:"Терминалро кушо ↗",start:"Омӯзишро оғоз кун",modules:"модул",lessons:"дарс",questions:"савол",why:"Ин танҳо сайт нест. Муҳити пурраи савдо.",f1:"Графики шамъӣ, активҳо, таймфреймҳо, фармоишҳо, позицияҳо, P&L ва таърих.",f2:"12 модул аз асосҳо то стратегия, психология ва имтиҳони ниҳоӣ.",f3:"Win rate, expectancy, drawdown, R-multiple, streak ва таҳлили журнал.",f4:"Risk calculator, нақшаи савдо, журнал, checklist ва export.",osTitle:"Як система барои омӯзиш ва практика.",osP:"Ҳама маълумот дар дастгоҳ нигоҳ дошта мешавад. Фармоиши воқеӣ ва пули воқеӣ нест.",academyTitle:"Академияи трейдер",academyP:"Барномаи системавии омӯзиш. Дарсҳоро гузар, ҷавоб деҳ ва XP ҷамъ кун.",yourProgress:"Прогресси ту",continue:"Омӯзишро идома деҳ",quizHub:"Quiz Lab",terminalTitle:"Trader Terminal",terminalP:"Симулятсия барои омӯзиш. Нархҳо шартӣ мебошанд.",analyticsTitle:"Trader Analytics",analyticsP:"Таърихи қарорҳоро ба статистика табдил деҳ.",toolsTitle:"Professional Toolkit",toolsP:"Асбобҳои амалии трейдер.",checklist:"Checklist пеш аз савдо",check1:"Нақшаи савдо ҳаст",check2:"Риск ҳисоб шудааст",check3:"Setup тасдиқ шудааст",check4:"Эҳсосот зери назорат аст"}};
 const C=[["01","Основы рынка",6],["02","Японские свечи",6],["03","Технический анализ",7],["04","Price Action",6],["05","Risk Management",6],["06","Психология",5],["07","Strategy Lab",8],["08","Trading Plan",5],["09","Advanced",5],["10","Final Lab",6],["11","Analytics",4],["12","Trader OS",4]];
 const L=[
@@ -85,5 +100,5 @@ function boot(){
 }
 window.addEventListener("error",e=>{console.error("TRADE ACADEMY runtime error:",e.error||e.message);const b=$("#boot");if(b)b.classList.add("hide")});
 window.addEventListener("unhandledrejection",e=>console.error(e.reason));
-document.addEventListener("DOMContentLoaded",boot);
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();
 })();
