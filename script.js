@@ -52,8 +52,38 @@ function analytics(){let j=state.journal,w=j.filter(x=>x.res==="win").length,sum
 function exportData(){let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));a.download="trade-academy-backup.json";a.click()}
 function toast(s){let x=$("#toast");x.textContent=s;x.classList.add("toast-show");setTimeout(()=>x.classList.remove("toast-show"),1700)}
 function bind(){document.querySelectorAll("[data-close]").forEach(x=>x.onclick=()=>x.closest(".modal").classList.remove("open"));$$(".modal").forEach(x=>x.onclick=e=>{if(e.target===x)x.classList.remove("open")});$("#nextQuestion").onclick=next;$("#continueLearning").onclick=()=>{let n=state.progress.length,s=0;for(let i=0;i<C.length;i++){if(n<s+C[i][2])return openLesson(i);s+=C[i][2]}toast("All lessons completed 🎉")};$("#quizHub").onclick=quiz;$("#calcRisk").onclick=risk;["rb","rp","re","rs","rt"].forEach(id=>$("#"+id).oninput=risk);$("#journalForm").onsubmit=e=>{e.preventDefault();state.journal.unshift({a:$("#jasset").value||"—",res:$("#jresult").value,r:+$("#jr").value||0,setup:$("#jsetup").value||"—",emotion:$("#jemotion").value,n:$("#jnote").value});save();journal();analytics();e.target.reset();toast("Trade saved ✓")};$("#savePlan").onclick=()=>{state.plan=$("#plan").value;save();$("#planSaved").textContent="Saved locally ✓";toast("Plan saved")};$("#plan").value=state.plan;$("#exportData").onclick=exportData;$("#exportData2").onclick=exportData;$("#resetData").onclick=()=>{if(confirm("Reset all local data?")){localStorage.removeItem(KEY);location.reload()}}}
-function boot(){const hide=()=>{const b=$("#boot");if(b)b.classList.add("hide")};try{navigation();settings();applyLang();home();terminal();renderCourses();journal();analytics();bind();const y=$("#year");if(y)y.textContent=new Date().getFullYear();hide()}catch(err){console.error("TRADE ACADEMY boot error:",err);const box=$("#errorBox");if(box){box.className="error";box.textContent="App initialization recovered. Reload the page once.";box.style.display="block"}hide()}}
-window.addEventListener("error",e=>{console.error(e.error||e.message);const b=$("#boot");if(b)b.classList.add("hide")});
+function boot(){
+  const hide=()=>{const b=$("#boot");if(b){b.classList.add("hide");setTimeout(()=>b.remove(),700)}};
+  const safe=(name,fn)=>{try{fn();return true}catch(err){console.error("TRADE ACADEMY module error:",name,err);return false}};
+  const modules=[
+    ["navigation",navigation],
+    ["settings",settings],
+    ["language",applyLang],
+    ["home",home],
+    ["terminal",terminal],
+    ["courses",renderCourses],
+    ["journal",journal],
+    ["analytics",analytics],
+    ["bindings",bind]
+  ];
+  let failed=[];
+  modules.forEach(([name,fn])=>{if(!safe(name,fn))failed.push(name)});
+  const y=$("#year");if(y)y.textContent=new Date().getFullYear();
+  const box=$("#errorBox");
+  if(box){
+    if(failed.length){
+      box.className="error";
+      box.textContent=(state.lang==="tj"?"Баъзе модули интерфейс бор нашуд: ":"Некоторые модули интерфейса не загрузились: ")+failed.join(", ");
+      box.style.display="block";
+    }else{
+      box.className="";
+      box.textContent="";
+      box.style.display="none";
+    }
+  }
+  hide();
+}
+window.addEventListener("error",e=>{console.error("TRADE ACADEMY runtime error:",e.error||e.message);const b=$("#boot");if(b)b.classList.add("hide")});
 window.addEventListener("unhandledrejection",e=>console.error(e.reason));
 document.addEventListener("DOMContentLoaded",boot);
 })();
