@@ -90,5 +90,5 @@ Risk per trade:
 <div id="quizModal" class="modal"><div class="modal-card quiz-card"><button class="close" data-close>×</button><span class="eyebrow">QUIZ LAB</span><h2>Knowledge Arena</h2><p>Проверь знания по модулям академии.</p><div id="quizContent"></div></div></div>
 <div id="toast"></div><div id="errorBox"></div>
 </div>
-<script src="script.js?v=20260929-6"></script>
-<script>document.documentElement.classList.add("app-ready");setTimeout(function(){var b=document.getElementById("boot");if(b)b.remove()},900);if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js?v=20260929-5").catch(function(){})}</script></body></html>
+<script src="script.js?v=20260929-7"></script>
+<script>document.documentElement.classList.add("app-ready");setTimeout(function(){var b=document.getElementById("boot");if(b)b.remove()},900);if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister()})}).catch(function(){});if(window.caches)window.caches.keys().then(function(keys){keys.forEach(function(k){window.caches.delete(k)})}).catch(function(){})}</script></body></html>
