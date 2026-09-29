@@ -1,8 +1,11 @@
 (()=>{"use strict";
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const KEY="TA_ULTIMATE_V6";
-const MODULES=[
+const MODULES_RU=[
 ["01","Основы рынка",6],["02","Японские свечи",6],["03","Технический анализ",7],["04","Price Action",6],["05","Risk Management",6],["06","Психология",5],["07","Strategy Lab",8],["08","Trading Plan",5],["09","Advanced",5],["10","Final Lab",6],["11","Analytics",4],["12","Trader OS",4]];
+const MODULES_TJ=[
+["01","Асосҳои бозор",6],["02","Шамъҳои японӣ",6],["03","Таҳлили техникӣ",7],["04","Price Action",6],["05","Идоракунии риск",6],["06","Психология",5],["07","Лабораторияи стратегия",8],["08","Нақшаи савдо",5],["09","Мавзӯъҳои пешрафта",5],["10","Лабораторияи ниҳоӣ",6],["11","Аналитика",4],["12","Trader OS",4]];
+let MODULES=MODULES_RU;
 const LESSONS=[
 ["Рынок и его участники","Рынок — система обмена активами. Трейдер изучает цену, ликвидность, время и контекст.","EUR/USD показывает относительную стоимость евро к доллару.","Что показывает рыночную структуру?",["Последовательность максимумов и минимумов","Цвет интерфейса","Размер депозита","Количество уроков"],0],
 ["Bid, Ask и Spread","Bid — цена продажи, Ask — цена покупки. Spread — разница между ними.","Bid 1.1741 и Ask 1.1743 дают spread 0.0002.","Что такое spread?",["Разница между Bid и Ask","Баланс счёта","Размер депозита","Количество свечей"],0],
@@ -21,23 +24,41 @@ const LESSONS=[
 ["Journal","Журнал нужен для анализа процесса: причина входа, риск, результат, эмоции и ошибки.","После серии сделок можно сравнить setup и R.","Зачем нужен торговый журнал?",["Чтобы анализировать процесс и ошибки","Чтобы гарантировать прибыль","Чтобы увеличить плечо","Чтобы заменить план"],0]
 ];
 const TJ=[
-["Бозор ва иштирокчиёни он","Бозор — низоми мубодилаи активҳост. Трейдер нарх, ликвиднокӣ, вақт ва контекстро меомӯзад.","EUR/USD арзиши нисбии евро нисбат ба долларро нишон медиҳад."],
-["Bid, Ask ва Spread","Bid — нархи фурӯш, Ask — нархи харид. Spread фарқи байни онҳо мебошад.","Bid 1.1741 ва Ask 1.1743 → spread 0.0002."],
-["Ликвиднокӣ","Ликвиднокӣ қобилияти бозор барои иҷрои аҳдҳо бе тағйири зиёди нарх аст.","Дар сессияи фаъол иҷрои аҳдҳо метавонад осонтар бошад."],
-["Шамъи японӣ","Шамъ Open, High, Low ва Close-ро нишон медиҳад. Тана масофаи байни кушодан ва бастан аст.","Танаи калон метавонад импулсро нишон диҳад."],
-["Импулс ва волатилнокӣ","Волатилнокӣ андозаи тағйироти нарх аст. Импулс ҳаракати самтнок мебошад.","Пеш аз хабарҳо диапазон метавонад зиёд шавад."],
-["Дастгирӣ ва муқовимат","Сатҳ минтақаест, ки нарх дар гузашта реаксия кардааст.","Якчанд реаксия метавонад минтақаи таваҷҷӯҳ бошад."],
-["Тренд","Сохтори болораванда одатан максимумҳо ва минимумҳои баландтар дорад.","HH + HL модели одии тренди болораванда аст."],
-["Сохтори бозор","BOS одатан шикасти сохтори муҳимро ифода мекунад.","Басташавии болотар аз swing high метавонад сигнали сохторӣ бошад."],
-["Идоракунии риск","Риск пеш аз вуруд муайян мешавад. Барои $10 000 ва 1% лимит $100 аст.","Андозаи позиция аз стоп ва арзиши пункт вобаста аст."],
-["R:R","R:R фоидаи эҳтимолиро бо риск муқоиса мекунад. 1:2 яъне ҳадаф тақрибан ду баробар аз риск калон аст.","$100 риск ва $200 ҳадаф = 1:2."],
-["Drawdown","Drawdown коҳиши капитал аз қулла то минимуми баъдӣ мебошад.","$10 500 → $9 975 = $525 коҳиш."],
-["FOMO","FOMO тарси аз даст додани ҳаракат аст.","Вуруди дер танҳо аз тарси аз даст додан мисоли FOMO мебошад."],
-["Revenge trading","Revenge trading кӯшиши зуд баргардонидани зарар бо риск ё аҳдҳои бетартиб аст.","Пас аз стоп ду баробар кардани риск мисол аст."],
-["Нақшаи савдо","Нақша идеяро ба қоидаҳо табдил медиҳад: бозор, setup, риск, вуруд ва баромад.","Рискро пеш аз ордер бояд донист."],
-["Журнал","Журнал барои таҳлили раванд, натиҷа, эҳсосот ва хатогиҳо истифода мешавад.","Маълумоти журнал барои review ва такмил кӯмак мекунад."]
+["Бозор ва иштирокчиёни он","Бозор — низоми мубодилаи активҳост. Трейдер нарх, ликвиднокӣ, вақт ва контекстро меомӯзад.","EUR/USD арзиши нисбии евро нисбат ба долларро нишон медиҳад.","Сохтори бозор чиро нишон медиҳад?",["Пайдарпайии максимумҳо ва минимумҳо","Ранги интерфейс","Андозаи депозит","Шумораи дарсҳо"]],
+["Bid, Ask ва Spread","Bid — нархи фурӯш, Ask — нархи харид. Spread фарқи байни онҳо мебошад.","Bid 1.1741 ва Ask 1.1743 → spread 0.0002.","Spread чист?",["Фарқи байни Bid ва Ask","Баланс","Андозаи депозит","Шумораи шамъҳо"]],
+["Ликвиднокӣ","Ликвиднокӣ қобилияти бозор барои иҷрои аҳдҳо бе тағйири зиёди нарх аст.","Дар сессияи фаъол иҷрои аҳдҳо метавонад осонтар бошад.","Ликвиднокии баланд чӣ маъно дорад?",["Аҳдҳо одатан осонтар иҷро мешаванд","Нарх ҳамеша боло меравад","Риск сифр аст","Бозор баста намешавад"]],
+["Шамъи японӣ","Шамъ Open, High, Low ва Close-ро нишон медиҳад. Тана масофаи байни кушодан ва бастан аст.","Танаи калон метавонад импулсро нишон диҳад.","Танаи шамъ чиро нишон медиҳад?",["Масофаи байни Open ва Close","Танҳо максимум","Танҳо минимум","Пароли аккаунт"]],
+["Импулс ва волатилнокӣ","Волатилнокӣ андозаи тағйироти нарх аст. Импулс ҳаракати самтнок мебошад.","Пеш аз хабарҳо диапазон метавонад зиёд шавад.","Волатилнокӣ чиро тавсиф мекунад?",["Андозаи тағйироти нарх","Танҳо spread","Иваз кардани забон","Шумораи дарсҳо"]],
+["Дастгирӣ ва муқовимат","Сатҳ минтақаест, ки нарх дар гузашта реаксия кардааст.","Якчанд реаксия метавонад минтақаи таваҷҷӯҳ бошад.","Дастгирӣ чӣ гуна минтақа аст?",["Минтақае, ки нарх дар он реаксия кардааст","Ҳар шамъи сабз","Танҳо максимум","Танҳо минимум"]],
+["Тренд","Сохтори болораванда одатан максимумҳо ва минимумҳои баландтар дорад.","HH + HL модели одии тренди болораванда аст.","Барои тренди болораванда чӣ хос аст?",["HH ва HL","Танҳо шамъҳои сурх","Ҳамеша боковик","Набудани ҳаракат"]],
+["Сохтори бозор","BOS одатан шикасти сохтори муҳимро ифода мекунад. CHoCH метавонад тағйири характерро нишон диҳад.","Басташавии болотар аз swing high метавонад сигнали сохторӣ бошад.","BOS одатан чӣ маъно дорад?",["Шикасти сохтори муҳим","Бастани брокер","Андозаи spread","Иваз кардани забон"]],
+["Идоракунии риск","Риск пеш аз вуруд муайян мешавад. Барои $10 000 ва 1% лимит $100 аст.","Андозаи позиция аз стоп ва арзиши пункт вобаста аст.","1% аз $10 000 чанд аст?",["$10","$50","$100","$1 000"]],
+["R:R","R:R фоидаи эҳтимолиро бо риск муқоиса мекунад. 1:2 яъне ҳадаф тақрибан ду баробар аз риск калон аст.","$100 риск ва $200 ҳадаф = 1:2.","R:R 1:2 чӣ маъно дорад?",["Риск ду баробар аз ҳадаф зиёд аст","Ҳадаф тақрибан ду баробар аз риск калон аст","Ба ҷои якто ду аҳд","Ду индикатор"]],
+["Drawdown","Drawdown коҳиши капитал аз қулла то минимуми баъдӣ мебошад.","$10 500 → $9 975 = $525 коҳиш.","Drawdown чист?",["Коҳиши капитал аз қулла","Комиссияи брокер","Андозаи шамъ","Тарси аз даст додан"]],
+["FOMO","FOMO тарси аз даст додани ҳаракат аст.","Вуруди дер танҳо аз тарси аз даст додан мисоли FOMO мебошад.","FOMO чиро тавсиф мекунад?",["Тарси аз даст додани ҳаракат","Ликвиднокии баланд","Асъори тестӣ","Бастани терминал"]],
+["Revenge trading","Revenge trading кӯшиши зуд баргардонидани зарар бо риск ё аҳдҳои бетартиб аст.","Пас аз стоп ду баробар кардани риск мисол аст.","Кадомаш revenge trading аст?",["Пас аз зарар аз рӯйи ғазаб рискро зиёд кардан","Терминалро мувофиқи нақша бастан","Навиштани аҳд дар журнал","Санҷидани хабарҳо"]],
+["Нақшаи савдо","Нақша идеяро ба қоидаҳо табдил медиҳад: бозор, сессия, setup, риск, вуруд, баромад ва манъиятҳо.","Пеш аз ҳафта трейдер шартҳои корро менависад.","Риски аҳдро кай бояд донист?",["Пас аз зарар","Пеш аз вуруд","Пас аз як моҳ","Ҳеҷ гоҳ"]],
+["Журнал","Журнал барои таҳлили раванд, натиҷа, эҳсосот ва хатогиҳо истифода мешавад.","Маълумоти журнал барои review ва такмил кӯмак мекунад.","Чаро торговый журнал лозим аст?",["Барои таҳлили раванд ва хатогиҳо","Барои кафолати фоида","Барои зиёд кардани плечо","Барои иваз кардани нақша"]]
 ];
-const T={ru:{home:"Главная",academy:"Академия",terminal:"Терминал",analytics:"Аналитика",tools:"Инструменты"},tj:{home:"Асосӣ",academy:"Академия",terminal:"Терминал",analytics:"Аналитика",tools:"Асбобҳо"}};
+const T={
+ru:{home:"Главная",academy:"Академия",terminal:"Терминал",analytics:"Аналитика",tools:"Инструменты"},
+tj:{home:"Асосӣ",academy:"Академия",terminal:"Терминал",analytics:"Аналитика",tools:"Асбобҳо"}
+};
+function tr(ru,tj){return state.lang==="tj"?tj:ru}
+function syncLanguageUI(){
+  MODULES=state.lang==="tj"?MODULES_TJ:MODULES_RU;
+  const labels={
+    "heroTerminal":["Открыть терминал ↗","Терминалро кушоед ↗"],
+    "heroLearn":["Начать обучение","Омӯзишро оғоз кунед"],
+    "continue":["Продолжить обучение","Омӯзишро идома диҳед"],
+    "quiz":["Quiz Lab","Quiz Lab"],
+    "all":["ALL","ҲАМА"],
+    "open":["OPEN","КУШОДА"],
+    "done":["COMPLETED","АНҶОМШУДА"],
+    "export":["Export JSON","Содироти JSON"]
+  };
+  Object.entries(labels).forEach(([k,v])=>{$('[data-i18n="'+k+'"]').forEach(x=>x.textContent=tr(v[0],v[1]))});
+}
 const DEFAULT={lang:"ru",theme:"dark",xp:0,progress:[],positions:[],history:[],journal:[],plan:"",checks:{},balance:10000};
 let state;
 try{state=Object.assign({},DEFAULT,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){state=Object.assign({},DEFAULT)}
@@ -53,17 +74,72 @@ function candles(seed,count=80,base=50){let p=base,a=[];for(let i=0;i<count;i++)
 function drawChart(canvas,data){if(!canvas)return;const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1,w=Math.max(240,r.width),h=Math.max(160,r.height);canvas.width=w*d;canvas.height=h*d;const x=canvas.getContext("2d");x.setTransform(d,0,0,d,0,0);x.clearRect(0,0,w,h);x.strokeStyle="rgba(130,160,145,.12)";for(let i=1;i<6;i++){x.beginPath();x.moveTo(0,h*i/6);x.lineTo(w,h*i/6);x.stroke()}let lo=Math.min(...data.map(z=>z.l)),hi=Math.max(...data.map(z=>z.h));if(hi===lo)hi=lo+1;const sy=v=>h-18-(v-lo)/(hi-lo)*(h-36),gap=w/data.length;data.forEach((z,i)=>{const xx=i*gap+gap/2,up=z.c>=z.o;x.strokeStyle=up?"#46ed91":"#ff6675";x.fillStyle=x.strokeStyle;x.beginPath();x.moveTo(xx,sy(z.h));x.lineTo(xx,sy(z.l));x.stroke();x.fillRect(xx-gap*.3,Math.min(sy(z.o),sy(z.c)),Math.max(2,gap*.6),Math.max(2,Math.abs(sy(z.c)-sy(z.o))))});return data.at(-1)}
 function view(name){$$(".view").forEach(v=>v.classList.toggle("active",v.id===name));$$(".desktop-nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===name));$("#mobileNav").classList.remove("open");if(name==="terminal")renderTerminal();if(name==="analytics")renderAnalytics();if(name==="learn")renderAcademy();window.scrollTo({top:0,behavior:"smooth"})}
 function applyTheme(){document.body.classList.toggle("light",state.theme==="light");$("#themeBtn").textContent=state.theme==="light"?"☀":"☾"}
-function applyLanguage(){document.documentElement.lang=state.lang;$("#langBtn").textContent=state.lang==="ru"?"TJ":"RU";$$("[data-key]").forEach(b=>{const k=b.dataset.key;if(T[state.lang][k])b.textContent=T[state.lang][k]})}
+function applyLanguage(){
+document.documentElement.lang=state.lang;
+$("#langBtn").textContent=state.lang==="ru"?"TJ":"RU";
+$("[data-key]").forEach(b=>{const k=b.dataset.key;if(T[state.lang][k])b.textContent=T[state.lang][k]});
+syncLanguageUI();
+const map={
+".hero .eyebrow":["DEMO MARKET ONLINE · V2 ENGINE","DEMO БОЗОР · V2 ENGINE"],
+".hero h1":["Торгуй умнее.\nУчись как профессионал.","Оқилонатар савдо кун.\nМисли профессионал омӯз."],
+".hero .lead":["Полноценная учебная среда: академия, интерактивный demo-terminal, свечной график, риск-менеджмент, журнал, аналитика и торговый план.","Муҳити пурраи омӯзишӣ: терминали demo, графики шамъӣ, идоракунии риск, журнал, аналитика ва нақшаи савдо."],
+".section-kicker":["PLATFORM","ПЛАТФОРМА"],
+".showcase h2":["Одна система для обучения и практики.","Як система барои омӯзиш ва амалия."],
+".showcase p":["Все учебные данные сохраняются локально на устройстве. Реальных ордеров, брокерского подключения и реальных денег нет.","Ҳама маълумоти омӯзишӣ дар дастгоҳ маҳаллӣ нигоҳ дошта мешаванд. Фармоиши воқеӣ, пайвастшавӣ ба брокер ва пули воқеӣ вуҷуд надорад."],
+"#learn .page-head h2":["Академия трейдера","Академияи трейдер"],
+"#learn .page-head p":["Проходи уроки, отвечай на вопросы и собирай XP. Прогресс хранится на этом устройстве.","Дарсҳоро гузар, ба саволҳо ҷавоб деҳ ва XP ҷамъ кун. Пешрафт дар ҳамин дастгоҳ нигоҳ дошта мешавад."],
+"#terminal .page-head h2":["Trader Terminal","Терминали трейдер"],
+"#terminal .page-head p":["Учебная симуляция. Котировки генерируются локально и не являются рыночными данными.","Симулятсияи омӯзишӣ. Нархҳо маҳаллӣ тавлид мешаванд ва маълумоти воқеии бозор нестанд."],
+"#analytics .page-head h2":["Trader Analytics","Аналитикаи трейдер"],
+"#analytics .page-head p":["Превращай историю решений в статистику и ищи повторяющиеся ошибки.","Қарорҳои худро ба омор табдил деҳ ва хатогиҳои такрориро пайдо кун."],
+"#tools .page-head h2":["Professional Toolkit","Асбобҳои касбӣ"],
+"#tools .page-head p":["Практические инструменты для подготовки сделки и анализа процесса.","Асбобҳои амалӣ барои омодагӣ ба аҳд ва таҳлили раванд."]
+};
+Object.entries(map).forEach(([sel,v])=>{const x=$(sel);if(x)x.textContent=tr(v[0],v[1])});
+}
 function renderHome(){const rows=[["EUR/USD",prices["EUR/USD"],.31],["GBP/USD",prices["GBP/USD"],.18],["USD/JPY",prices["USD/JPY"],-.22],["XAU/USD",prices["XAU/USD"],.42],["BTC/USD",prices["BTC/USD"],1.08]];$("#ticker").innerHTML=rows.map(r=>'<div><b>'+r[0]+'</b> '+fmt(r[1],decimals(r[0]))+' <i class="'+(r[2]>=0?"good":"bad")+'">'+(r[2]>=0?"+":"")+r[2].toFixed(2)+"%</i></div>").join("");$("#homeXP").textContent=state.xp;const w=state.journal.filter(x=>x.res==="win").length;$("#homeWin").textContent=(state.journal.length?Math.round(w/state.journal.length*100):0)+"%";$("#homeEquity").textContent="$"+state.balance.toFixed(2);drawChart($("#heroChart"),candles(2,72,50));}
 function renderAcademy(){const done=state.progress.length;$("#progressPct").textContent=Math.round(done/68*100)+"%";$("#progressText").textContent=done+" из 68 уроков завершено";$("#progressBar").style.width=Math.min(100,done/68*100)+"%";$("#xp").textContent=state.xp;$("#level").textContent=state.xp>=900?"Master":state.xp>=400?"Advanced":state.xp>=100?"Trader":"Novice";const list=MODULES.map((m,i)=>{const n=state.progress.filter(x=>x.startsWith(i+"-")).length,isDone=n>=m[2],isOpen=n>0||i===0;return {m,i,n,isDone,isOpen}}).filter(o=>filter==="done"?o.isDone:filter==="open"?o.isOpen:true);$("#courses").innerHTML=list.map(o=>'<article class="course glass '+(o.isDone?"done":"")+'"><span class="course-num">'+o.m[0]+' · MODULE</span><h3>'+o.m[1]+'</h3><p>'+o.n+'/'+o.m[2]+' уроков · '+(o.isDone?"Module completed":"Практика + checkpoint")+'</p><div class="course-bar"><i style="width:'+Math.round(o.n/o.m[2]*100)+'%"></i></div><small>'+Math.round(o.n/o.m[2]*100)+'%</small><button data-action="course" data-module="'+o.i+'">'+(o.isDone?"Review module":"Open module")+'</button></article>').join("")||'<div class="glass course"><h3>No modules</h3></div>'}
 function openCourse(m){let n=0;while(n<MODULES[m][2]&&state.progress.includes(m+"-"+n))n++;lessonState={module:m,index:Math.min(n,MODULES[m][2]-1),correct:false};renderLesson()}
 function lessonData(){return LESSONS[(lessonState.module*5+lessonState.index)%LESSONS.length]}
-function renderLesson(){const d=lessonData(),t=state.lang==="tj"?TJ[(lessonState.module*5+lessonState.index)%TJ.length]:[d[0],d[1],d[2]];$("#lessonKicker").textContent=MODULES[lessonState.module][0]+" · "+MODULES[lessonState.module][1];$("#lessonProgress").textContent=(lessonState.index+1)+"/"+MODULES[lessonState.module][2];$("#lessonTitle").textContent=t[0];$("#lessonText").textContent=t[1];$("#lessonPoints").innerHTML='<div class="point">✓ '+(state.lang==="tj"?"Фаҳмиши мафҳум":"Ключевой принцип")+'</div><div class="point">✓ '+(state.lang==="tj"?"Мисоли амалӣ":"Практический контекст")+'</div>';$("#lessonExample").innerHTML="<b>"+(state.lang==="tj"?"Мисол":"Пример")+"</b><br>"+t[2];$("#questionText").textContent=d[3];$("#answers").innerHTML=d[4].map((a,i)=>'<button data-action="answer" data-answer="'+i+'">'+a+'</button>').join("");$("#feedback").textContent="";$("#nextLesson").disabled=true;$("#lessonModal").classList.add("open")}
-function answer(i){const d=lessonData();lessonState.correct=i===d[5];$$("[data-action=answer]").forEach((b,n)=>{b.disabled=true;b.classList.toggle("correct",n===d[5]);b.classList.toggle("wrong",n===i&&i!==d[5])});$("#feedback").textContent=lessonState.correct?"✓ Верно! +10 XP":"✗ Неверно. Правильный ответ: "+d[4][d[5]];$("#feedback").className=lessonState.correct?"good":"bad";$("#nextLesson").disabled=false}
+function renderLesson(){
+const idx=(lessonState.module*5+lessonState.index)%LESSONS.length,d=LESSONS[idx];
+const t=state.lang==="tj"?TJ[idx]:[d[0],d[1],d[2],d[3],d[4]];
+$("#lessonKicker").textContent=MODULES[lessonState.module][0]+" · "+MODULES[lessonState.module][1];
+$("#lessonProgress").textContent=(lessonState.index+1)+"/"+MODULES[lessonState.module][2];
+$("#lessonTitle").textContent=t[0];$("#lessonText").textContent=t[1];
+$("#lessonPoints").innerHTML='<div class="point">✓ '+tr("Ключевой принцип","Фаҳмиши мафҳум")+'</div><div class="point">✓ '+tr("Практический контекст","Мисоли амалӣ")+'</div>';
+$("#lessonExample").innerHTML="<b>"+tr("Пример","Мисол")+"</b><br>"+t[2];
+$("#questionText").textContent=t[3]||d[3];
+const answers=(t[4]||d[4]).map((text,original)=>({text,original}));
+for(let i=answers.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[answers[i],answers[j]]=[answers[j],answers[i]]}
+$("#answers").innerHTML=answers.map((a,i)=>'<button data-action="answer" data-answer="'+i+'" data-original="'+a.original+'">'+a.text+'</button>').join("");
+$("#feedback").textContent="";$("#feedback").className="";
+$("#nextLesson").disabled=true;$("#lessonModal").classList.add("open");
+}
+function answer(i){
+const d=lessonData(),btn=$("[data-action=answer]")[i],original=btn?+btn.dataset.original:i;
+lessonState.correct=original===d[5];
+$("[data-action=answer]").forEach((b,n)=>{const o=+b.dataset.original;b.disabled=true;b.classList.toggle("correct",o===d[5]);b.classList.toggle("wrong",n===i&&o!==d[5])});
+const correctText=state.lang==="tj"?TJ[(lessonState.module*5+lessonState.index)%TJ.length][4][d[5]]:d[4][d[5]];
+$("#feedback").textContent=lessonState.correct?tr("✓ Верно! +10 XP","✓ Дуруст! +10 XP"):tr("✗ Неверно. Правильный ответ: ","✗ Нодуруст. Ҷавоби дуруст: ")+correctText;
+$("#feedback").className=lessonState.correct?"good":"bad";$("#nextLesson").disabled=false;
+}
 function nextLesson(){if(!lessonState.correct)return;const id=lessonState.module+"-"+lessonState.index;if(!state.progress.includes(id)){state.progress.push(id);state.xp+=10;save()}if(lessonState.index+1<MODULES[lessonState.module][2]){lessonState.index++;lessonState.correct=false;renderLesson();renderAcademy()}else{$("#lessonModal").classList.remove("open");renderAcademy();toast("Модуль завершён 🎉")}}
 function startQuiz(){const pool=[...LESSONS].sort(()=>Math.random()-.5).slice(0,12);quizState={pool,i:0,score:0};$("#quizModal").classList.add("open");renderQuiz()}
-function renderQuiz(){if(quizState.i>=quizState.pool.length){$("#quizContent").innerHTML='<div class="quiz-score">'+quizState.score+'/'+quizState.pool.length+'</div><h2>Quiz завершён</h2><p>Результат сохранён в текущей сессии.</p><button class="btn primary wide" data-action="quizAgain">Пройти снова</button>';return}const d=quizState.pool[quizState.i];$("#quizContent").innerHTML='<div class="quiz-progress">'+(quizState.i+1)+' / '+quizState.pool.length+'</div><h3>'+d[3]+'</h3><div class="answers">'+d[4].map((a,i)=>'<button data-action="quizAnswer" data-answer="'+i+'">'+a+'</button>').join("")+'</div>'}
-function quizAnswer(i){const d=quizState.pool[quizState.i];$$("[data-action=quizAnswer]").forEach((b,n)=>{b.disabled=true;b.classList.toggle("correct",n===d[5]);b.classList.toggle("wrong",n===i&&n!==d[5])});if(i===d[5])quizState.score++;setTimeout(()=>{quizState.i++;renderQuiz()},350)}
+function renderQuiz(){
+if(quizState.i>=quizState.pool.length){
+$("#quizContent").innerHTML='<div class="quiz-score">'+quizState.score+'/'+quizState.pool.length+'</div><h2>'+tr("Quiz завершён","Quiz анҷом ёфт")+'</h2><p>'+tr("Результат сохранён в текущей сессии.","Натиҷа дар сессияи ҷорӣ нигоҳ дошта шуд.")+'</p><button class="btn primary wide" data-action="quizAgain">'+tr("Пройти снова","Аз нав гузаштан")+'</button>';return}
+const d=quizState.pool[quizState.i],idx=LESSONS.indexOf(d),t=state.lang==="tj"?TJ[idx]:d;
+let answers=(t[4]||d[4]).map((text,original)=>({text,original}));
+for(let i=answers.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[answers[i],answers[j]]=[answers[j],answers[i]]}
+$("#quizContent").innerHTML='<div class="quiz-progress">'+(quizState.i+1)+" / "+quizState.pool.length+'</div><h3>'+((t[3])||d[3])+'</h3><div class="answers">'+answers.map((a,i)=>'<button data-action="quizAnswer" data-answer="'+i+'" data-original="'+a.original+'">'+a.text+'</button>').join("")+'</div>';
+}
+function quizAnswer(i){
+const d=quizState.pool[quizState.i],btn=$("[data-action=quizAnswer]")[i],original=btn?+btn.dataset.original:i;
+$("[data-action=quizAnswer]").forEach((b,n)=>{const o=+b.dataset.original;b.disabled=true;b.classList.toggle("correct",o===d[5]);b.classList.toggle("wrong",n===i&&o!==d[5])});
+if(original===d[5])quizState.score++;
+setTimeout(()=>{quizState.i++;renderQuiz()},450);
+}
 function syncPrices(){Object.keys(prices).forEach(a=>{const f=a==="BTC/USD"?0.0015:.0007;prices[a]*=1+(Math.random()-.5)*f});renderTerminal();renderHome()}
 function renderTerminal(){const a=$("#assetSelect").value,v=prices[a];$("#orderSelect").value=a;$("#terminalPrice").textContent=fmt(v,decimals(a));$("#terminalMove").textContent=(Math.random()>.5?"+":"-")+(Math.random()*.5).toFixed(2)+"%";$("#entry").textContent=fmt(v,decimals(a));$("#risk").textContent="$"+(state.balance*(+$("#riskPct").value||1)/100).toFixed(2);const d=candles(v+currentTF.length,90,v/10);const last=drawChart($("#tradeChart"),d);$("#co").textContent=fmt(last.o,decimals(a));$("#ch").textContent=fmt(last.h,decimals(a));$("#cl").textContent=fmt(last.l,decimals(a));$("#cc").textContent=fmt(last.c,decimals(a));$("#cv").textContent=last.v;const floating=state.positions.reduce((s,p)=>s+pnl(p),0);$("#balance").textContent="$"+state.balance.toFixed(2);$("#equity").textContent="$"+(state.balance+floating).toFixed(2);$("#free").textContent="$"+(state.balance+floating-state.positions.length*50).toFixed(2);$("#posCount").textContent=state.positions.length;$("#positions").innerHTML=state.positions.map(p=>'<div class="position"><button class="close" data-action="closePosition" data-id="'+p.id+'">×</button><b class="'+(p.side==="BUY"?"good":"bad")+'">'+p.side+'</b> '+p.asset+' · '+p.qty+'<br><span>Entry '+fmt(p.entry,decimals(p.asset))+' · P&L <b class="'+(pnl(p)>=0?"good":"bad")+'">'+pnl(p).toFixed(2)+'</b></span></div>').join("")||'<span style="color:var(--muted);font-size:11px">No open positions.</span>';$("#history").innerHTML=state.history.slice(0,20).map(x=>'<div class="history-row"><b>'+x.asset+'</b><span>'+x.side+'</span><span>'+x.qty+'</span><span>'+x.time+'</span><b class="'+(x.pnl>=0?"good":"bad")+'">'+x.pnl.toFixed(2)+'</b></div>').join("")||'<span style="color:var(--muted);font-size:11px">No closed trades.</span>'}
 function pnl(p){return(prices[p.asset]-p.entry)*(p.side==="BUY"?1:-1)*p.qty*(p.asset==="XAU/USD"?10:p.asset==="BTC/USD"?1:1000)}
@@ -76,7 +152,7 @@ function exportData(){const a=document.createElement("a");a.href=URL.createObjec
 function resetData(){if(confirm("Сбросить весь локальный прогресс, журнал и demo-счёт?")){localStorage.removeItem(KEY);location.reload()}}
 function saveJournal(){const f=$("#journalForm");if(!f)return;state.journal.unshift({asset:$("#jasset").value||"—",res:$("#jresult").value,r:+$("#jr").value||0,emotion:$("#jemotion").value,setup:$("#jsetup").value||"—",note:$("#jnote").value||"—",time:new Date().toLocaleString()});save();renderJournal();renderAnalytics();f.reset();toast("Trade saved ✓")}
 function renderJournal(){$("#journalList").innerHTML=state.journal.slice(0,10).map(x=>'<div class="journal-item"><b>'+x.asset+'</b> · '+x.res+' · '+x.r+'R<br><span>'+x.setup+' · '+x.emotion+' · '+x.note+'</span></div>').join("")||'<span style="color:var(--muted);font-size:11px">No journal entries.</span>'}
-function bind(){document.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(!b)return;const a=b.dataset.action;if(a==="view")view(b.dataset.view);else if(a==="menu")$("#mobileNav").classList.toggle("open");else if(a==="lang"){state.lang=state.lang==="ru"?"tj":"ru";save();applyLanguage();renderAcademy();toast(state.lang==="tj"?"Забон: тоҷикӣ":"Язык: русский")}else if(a==="theme"){state.theme=state.theme==="dark"?"light":"dark";save();applyTheme()}else if(a==="continue"){let found=false;for(let i=0;i<MODULES.length;i++){for(let n=0;n<MODULES[i][2];n++)if(!state.progress.includes(i+"-"+n)){openCourse(i);found=true;break}if(found)break}if(!found)toast("Все уроки завершены 🎉")}else if(a==="course")openCourse(+b.dataset.module);else if(a==="answer")answer(+b.dataset.answer);else if(a==="nextLesson")nextLesson();else if(a==="quiz")startQuiz();else if(a==="quizAgain")startQuiz();else if(a==="quizAnswer")quizAnswer(+b.dataset.answer);else if(a==="closeModal")b.closest(".modal").classList.remove("open");else if(a==="indicators")$("#indicatorPanel").classList.toggle("open");else if(a==="tf"){currentTF=b.dataset.tf;$$("[data-action=tf]").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderTerminal()}else if(a==="buy"||a==="sell")openPosition(a==="buy"?"BUY":"SELL");else if(a==="closePosition")closePosition(b.dataset.id);else if(a==="clearHistory"){state.history=[];save();renderTerminal();toast("History cleared")}else if(a==="calcRisk")calcRisk();else if(a==="savePlan"){state.plan=$("#plan").value;save();$("#planSaved").textContent="Saved locally ✓";toast("Plan saved")}else if(a==="export")exportData();else if(a==="reset")resetData();else if(a==="filter"){filter=b.dataset.filter;$$("[data-action=filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderAcademy()}});
+function bind(){document.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(!b)return;const a=b.dataset.action;if(a==="view")view(b.dataset.view);else if(a==="menu")$("#mobileNav").classList.toggle("open");else if(a==="lang"){state.lang=state.lang==="ru"?"tj":"ru";save();applyLanguage();renderHome();renderAcademy();renderTerminal();renderAnalytics();renderJournal();$("#plan").value=state.plan;toast(state.lang==="tj"?"Забон: тоҷикӣ":"Язык: русский")}else if(a==="theme"){state.theme=state.theme==="dark"?"light":"dark";save();applyTheme()}else if(a==="continue"){let found=false;for(let i=0;i<MODULES.length;i++){for(let n=0;n<MODULES[i][2];n++)if(!state.progress.includes(i+"-"+n)){openCourse(i);found=true;break}if(found)break}if(!found)toast("Все уроки завершены 🎉")}else if(a==="course")openCourse(+b.dataset.module);else if(a==="answer")answer(+b.dataset.answer);else if(a==="nextLesson")nextLesson();else if(a==="quiz")startQuiz();else if(a==="quizAgain")startQuiz();else if(a==="quizAnswer")quizAnswer(+b.dataset.answer);else if(a==="closeModal")b.closest(".modal").classList.remove("open");else if(a==="indicators")$("#indicatorPanel").classList.toggle("open");else if(a==="tf"){currentTF=b.dataset.tf;$$("[data-action=tf]").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderTerminal()}else if(a==="buy"||a==="sell")openPosition(a==="buy"?"BUY":"SELL");else if(a==="closePosition")closePosition(b.dataset.id);else if(a==="clearHistory"){state.history=[];save();renderTerminal();toast("History cleared")}else if(a==="calcRisk")calcRisk();else if(a==="savePlan"){state.plan=$("#plan").value;save();$("#planSaved").textContent="Saved locally ✓";toast("Plan saved")}else if(a==="export")exportData();else if(a==="reset")resetData();else if(a==="filter"){filter=b.dataset.filter;$$("[data-action=filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderAcademy()}});
 document.addEventListener("change",e=>{const c=e.target;if(c.matches("[data-check]")){state.checks[c.dataset.check]=c.checked;save()}if(c.dataset.change==="asset"){renderTerminal()}if(c.dataset.change==="orderAsset"){$("#assetSelect").value=c.value;renderTerminal()}});
 document.addEventListener("input",e=>{if(e.target.id==="riskPct"){const v=state.balance*(+e.target.value||1)/100;$("#risk").textContent="$"+v.toFixed(2)}});
 $("#journalForm").addEventListener("submit",e=>{e.preventDefault();saveJournal()});
