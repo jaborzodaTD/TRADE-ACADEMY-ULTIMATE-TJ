@@ -58,7 +58,7 @@
 <section class="view" id="learn">
   <div class="page-head"><div><span>02 · ACADEMY</span><h2>Академия трейдера</h2><p>Проходи уроки, отвечай на вопросы и собирай XP. Прогресс хранится на этом устройстве.</p></div><div class="profile"><span id="avatar">F</span><b id="level">Novice</b><small><strong id="xp">0</strong> XP</small></div></div>
   <div class="academy-banner glass"><div class="progress-ring"><b id="progressPct">0%</b><small>PROGRESS</small></div><div class="grow"><b id="progressText">0 из 68 уроков завершено</b><div class="progress-line"><i id="progressBar"></i></div><small>Следующий уровень: 100 XP</small></div><button class="btn primary" data-action="continue">Продолжить обучение</button><button class="btn secondary" data-action="quiz">Quiz Lab</button></div>
-  <div class="filters"><button class="active" data-action="filter" data-filter="all">ALL</button><button data-action="filter" data-filter="open">OPEN</button><button data-action="filter" data-filter="done">COMPLETED</button></div>
+  <div class="filters"><button class="active" data-action="filter" data-filter="all" data-i18n="all">ALL</button><button data-action="filter" data-filter="open" data-i18n="open">OPEN</button><button data-action="filter" data-filter="done" data-i18n="done">COMPLETED</button></div>
   <div id="courses" class="course-grid"></div>
 </section>
 
@@ -85,7 +85,7 @@
 </section>
 
 <section class="view" id="analytics">
-  <div class="page-head"><div><span>04 · ANALYTICS OS</span><h2>Trader Analytics</h2><p>Превращай историю решений в статистику и ищи повторяющиеся ошибки.</p></div><button class="btn secondary" data-action="export">Export JSON</button></div>
+  <div class="page-head"><div><span>04 · ANALYTICS OS</span><h2>Trader Analytics</h2><p>Превращай историю решений в статистику и ищи повторяющиеся ошибки.</p></div><button class="btn secondary" data-action="export" data-i18n="export">Export JSON</button></div>
   <div class="metric-grid"><div class="metric glass"><small>WIN RATE</small><b id="winRate">0%</b><span>journal</span></div><div class="metric glass"><small>EXPECTANCY</small><b id="expectancy">0.00R</b><span>per trade</span></div><div class="metric glass"><small>MAX DRAWDOWN</small><b id="drawdown">0R</b><span>journal</span></div><div class="metric glass"><small>BEST STREAK</small><b id="streak">0</b><span>wins</span></div></div>
   <div class="analytics-two"><div class="glass graph-card"><div class="subhead"><b>Equity / R curve</b><span id="tradeCount">0 trades</span></div><canvas id="equityChart"></canvas></div><div class="glass stats"><h3>Performance breakdown</h3><div id="breakdown"></div></div></div>
   <div class="glass checklist"><div class="subhead"><b>PRE-TRADE CHECKLIST</b><span>LOCAL</span></div><label><input type="checkbox" data-check="plan"> Есть торговый план</label><label><input type="checkbox" data-check="risk"> Риск рассчитан</label><label><input type="checkbox" data-check="setup"> Есть подтверждённый setup</label><label><input type="checkbox" data-check="emotion"> Эмоции под контролем</label></div>
