@@ -1,28 +1,29 @@
-# TRADE ACADEMY ULTIMATE TJ
+# TRADE ACADEMY ULTIMATE
 
-Premium bilingual trading education and demo-terminal web app.
+Native iOS + Android trading education and demo-terminal application.
 
-## Author
-**JABORZODA and MUZAFARZODA**
+**Author:** JABORZODA and MUZAFARZODA
 
-## Features
+## Stack
+- Expo SDK 57
+- React Native 0.86
+- React 19
+- TypeScript
+
+## Product
 - Russian / Tajik interface
-- Premium responsive UI
-- Canvas candlestick charts
-- Demo trading terminal
-- Academy with 12 modules and 60+ lessons
+- Trader dashboard
+- Academy and randomized quizzes
+- Simulated trading terminal
 - Risk calculator
-- Trading journal
+- Journal
+- Analytics
 - Trading plan
-- Trader analytics
-- Local progress and settings
-- Dark / light theme
-- Mobile navigation
-- GitHub Pages compatible
-- No backend and no real-money execution
+- Dark premium mobile UI
+- Demo only; no broker connection and no real-money execution
 
-## Deployment
-GitHub Pages -> Settings -> Pages -> Deploy from `main` / root.
+## Development
+`npm install`
+`npm start`
 
-## Important
-This is an educational simulation. It does not execute real trades and is not financial advice.
+Use Expo Go for device preview or EAS for production Android/iOS builds.
